@@ -19,14 +19,14 @@ let run3Image = null;
 let fallenImage = null;
 let fallImage = null;
 let showingLines = false;
-let showingCoins = false;
+let showingCoins = true;
 let levelImages = [];
 
 let placingPlayer = false;
 let placingCoins = false;
 let playerPlaced = false;
 
-let testingSinglePlayer = true;
+let testingSinglePlayer = false;
 
 
 let fallSound = null;
@@ -42,7 +42,7 @@ let levelDrawn = false;
 
 
 let startingPlayerActions = 5;
-let increaseActionsByAmount = 5;
+let increaseActionsByAmount = 3;
 let increaseActionsEveryXGenerations = 10;
 let evolationSpeed = 1;
 
@@ -202,8 +202,8 @@ function draw() {
 let previousFrameRate = 60;
 
 function showLevel(levelNumberToShow) {
-    // print(levelNumberToShow)
-    // image(levels[levelNumberToShow].levelImage, 0, 0)
+    print(levelNumberToShow)
+    image(levels[levelNumberToShow].levelImage, 0, 0)
     levels[levelNumberToShow].show();
 }
 
