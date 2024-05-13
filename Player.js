@@ -292,7 +292,7 @@ class Player {
         if (this.playersDead)//|| this.hasFinishedInstructions)
             return;
         let currentLines = levels[this.currentLevelNo].lines;
-        if (!testingSinglePlayer && !this.hasFinishedInstructions) {
+        if (!testingSinglePlayer && !testingMultiPlayer && !this.hasFinishedInstructions) {
             this.UpdateAIAction()
         }
         this.UpdatePlayerSlide(currentLines);
@@ -410,7 +410,7 @@ class Player {
                 this.currentSpeed.y = 0 - this.currentSpeed.y / 2;
                 // ok we gonna need to snap this shit
                 this.currentPos.y = chosenLine.y1;
-                if (!mutePlayers || testingSinglePlayer) {
+                if (!mutePlayers || testingSinglePlayer || testingMultiPlayer) {
                     bumpSound.playMode('sustain');
                     bumpSound.play();
                 }
@@ -438,7 +438,7 @@ class Player {
             this.currentSpeed.x = 0 - this.currentSpeed.x / 2;
             if (!this.isOnGround) {
                 this.hasBumped = true;
-                if (!mutePlayers|| testingSinglePlayer) {
+                if (!mutePlayers|| testingSinglePlayer || testingMultiPlayer) {
                     bumpSound.playMode('sustain');
                     bumpSound.play();
                 }
@@ -661,7 +661,7 @@ class Player {
 
 
         //show snow
-        if (levels[this.currentLevelNo].isBlizzardLevel && (!alreadyShowingSnow||testingSinglePlayer)) {
+        if (levels[this.currentLevelNo].isBlizzardLevel && (!alreadyShowingSnow||testingSinglePlayer||testingMultiPlayer)) {
 
             let snowDrawPosition = this.snowImagePosition;
             while (snowDrawPosition <= 0) {
@@ -702,7 +702,7 @@ class Player {
         // print(this.jumpTimer);
         this.jumpTimer = 0
         this.jumpStartingHeight = (height - this.currentPos.y) + height * this.currentLevelNo;
-        if (!mutePlayers|| testingSinglePlayer) {
+        if (!mutePlayers|| testingSinglePlayer || testingMultiPlayer) {
             jumpSound.playMode('sustain');
             jumpSound.play();
         }
@@ -1263,7 +1263,7 @@ class Player {
 
         }
 
-        if (!mutePlayers|| testingSinglePlayer) {
+        if (!mutePlayers|| testingSinglePlayer || testingMultiPlayer) {
             if (this.hasFallen) {
                 fallSound.playMode('sustain');
                 fallSound.play();

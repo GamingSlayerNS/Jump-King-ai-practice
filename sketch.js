@@ -27,6 +27,7 @@ let placingCoins = false;
 let playerPlaced = false;
 
 let testingSinglePlayer = false;
+let testingMultiPlayer = true;
 
 
 let fallSound = null;
@@ -139,6 +140,11 @@ function draw() {
         levels[player.currentLevelNo].show();
         player.Update();
         player.Show();
+    } else if(testingMultiPlayer) {
+        image(levels[player.currentLevelNo].levelImage, 0, 0)
+        levels[player.currentLevelNo].show();
+        player.Update();
+        player.Show();
     } else if(replayingBestPlayer) {
         if(!cloneOfBestPlayer.hasFinishedInstructions){
             for (let i = 0; i < evolationSpeed; i++){
@@ -153,7 +159,7 @@ function draw() {
             mutePlayers = true;
         }
 
-    }else{
+    } else {
 
         if (population.AllPlayersFinished()) {
             population.NaturalSelection();
